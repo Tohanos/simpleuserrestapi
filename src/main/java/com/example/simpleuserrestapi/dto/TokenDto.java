@@ -1,4 +1,4 @@
-package com.example.simplemessengerapp.dto;
+package com.example.simpleuserrestapi.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

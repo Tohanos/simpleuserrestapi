@@ -1,7 +1,7 @@
-package com.example.simplemessengerapp.repository;
+package com.example.simpleuserrestapi.repository;
 
-import com.example.simplemessengerapp.entities.User;
-import com.example.simplemessengerapp.repositories.UserRepository;
+import com.example.simpleuserrestapi.entities.User;
+import com.example.simpleuserrestapi.repositories.UserRepository;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,13 +35,13 @@ public class UserRepositoryTest {
     public void testUsers() {
         if (userRepository.getUserByName(NAME).isEmpty()) {
             User user = new User();
-            user.setName(NAME);
+            user.setNickname(NAME);
             user.setPassword(PASS);
 
             saveUser(user);
         }
         User newUser = userRepository.getUserByName(NAME).get();
-        assertThat(NAME).isEqualTo(newUser.getName());
+        assertThat(NAME).isEqualTo(newUser.getNickname());
         assertThat(PASS).isEqualTo(newUser.getPassword());
         Optional<User> user = userRepository.getUserByName(NAME);
         user.ifPresent(this::deleteUser);

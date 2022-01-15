@@ -1,14 +1,12 @@
 CREATE TABLE "users" (
                          "id" SERIAL PRIMARY KEY,
-                         "username" VARCHAR(255) UNIQUE,
+                         "nickname" VARCHAR(255) UNIQUE,
+                         "name" VARCHAR(255),
+                         "surname1" VARCHAR(255),
+                         "surname2" VARCHAR(255),
+                         "birthday" DATE,
+                         "email" VARCHAR(255),
+                         "phone" VARCHAR(255),
                          "password" VARCHAR(255)
 );
 
-CREATE TABLE "messages" (
-                        "id" SERIAL PRIMARY KEY,
-                        "user_id" int,
-                        "text" VARCHAR(255),
-                        "dt" timestamp
-);
-
-ALTER TABLE "messages" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");

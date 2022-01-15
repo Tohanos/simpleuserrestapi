@@ -1,13 +1,15 @@
-package com.example.simplemessengerapp.controllers;
+package com.example.simpleuserrestapi.controllers;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+
+
 import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpHeaders;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -15,7 +17,7 @@ import java.net.URISyntaxException;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class MessageControllerTest {
+public class UserControllerTest {
 
     @LocalServerPort
     private int port;
@@ -24,8 +26,8 @@ public class MessageControllerTest {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void messageRestTest() throws URISyntaxException {
-        String url = "http://localhost:" + port + "/user";
+    public void userRestTest() throws URISyntaxException {
+        String url = "http://localhost:" + port + "/login";
         URI uri = new URI(url);
         String messageToSend = "{\n" +
                 "  \"name\" : \"Petya\",\n" +
@@ -37,21 +39,6 @@ public class MessageControllerTest {
 
         ResponseEntity<String> result = this.restTemplate.postForEntity(uri, httpEntity, String.class);
 
-        String[] responseStrings = result.getBody().split(":");
-        String token = responseStrings[1].replace("\"", "").replace("}", "");
-
-        url = "http://localhost:" + port + "/message";
-        uri = new URI(url);
-        messageToSend = "{\n" +
-                "  \"name\" : \"Petya\",\n" +
-                "  \"message\" : \"Alright then\"\n" +
-                "}";
-        headers = new HttpHeaders();
-        headers.set("Content-Type", "application/json");
-        headers.set("Bearer", token);
-
-        httpEntity = new HttpEntity<>(messageToSend, headers);
-        result = this.restTemplate.postForEntity(uri, httpEntity, String.class);
         assertThat(result.getStatusCode().is2xxSuccessful()).isTrue();
     }
 }

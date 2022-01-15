@@ -1,7 +1,7 @@
-package com.example.simplemessengerapp.services;
+package com.example.simpleuserrestapi.services;
 
-import com.example.simplemessengerapp.dto.UserDto;
-import com.example.simplemessengerapp.entities.User;
+import com.example.simpleuserrestapi.dto.UserDto;
+import com.example.simpleuserrestapi.entities.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,20 +21,20 @@ public class UserServicesTest {
     @Test
     public void createDeleteUserTest() {
         User user = new User();
-        user.setName(NAME);
+        user.setNickname(NAME);
         user.setPassword(PASS);
 
         service.registerNewUser(user);
 
-        user = service.getUserByUsername(NAME);
-        assertThat(user.getName()).isEqualTo(NAME);
+        user = service.getUserByNickname(NAME);
+        assertThat(user.getNickname()).isEqualTo(NAME);
         assertThat(user.getPassword()).isEqualTo(PASS);
         assertThat(service.checkPassword(NAME, PASS)).isTrue();
 
         service.deleteUser(user);
 
         try {
-            service.getUserByUsername(NAME);
+            service.getUserByNickname(NAME);
         } catch (Exception e) {
             assertThat(e).hasMessage(ERROR_MESSAGE);
         }
@@ -43,12 +43,12 @@ public class UserServicesTest {
     @Test
     public void fromToDto() {
         User user = new User();
-        user.setName(NAME);
+        user.setNickname(NAME);
         user.setPassword(PASS);
 
         UserDto dto = service.toDto(user);
 
-        assertThat(service.fromDto(dto).getName()).isEqualTo(NAME);
+        assertThat(service.fromDto(dto).getNickname()).isEqualTo(NAME);
         assertThat(service.fromDto(dto).getPassword()).isEqualTo(PASS);
 
     }

@@ -1,4 +1,4 @@
-package com.example.simplemessengerapp.services;
+package com.example.simpleuserrestapi.services;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -16,7 +16,7 @@ public class TokenAuthenticationService {
     private static final String SECRET = "de23gt50opq23gy2";
     private static final String TOKEN_PREFIX = "name";
 
-    //  Ассоциативный массив для хранения выданных в текщей сессии токенов
+    //  Ассоциативный массив для хранения выданных в текщей сессии токенов - кэш токенов
     private HashMap<String, String> tokenMap = new HashMap<>();
 
     //  Генерация токена по имени
@@ -32,11 +32,20 @@ public class TokenAuthenticationService {
         return token;
     }
 
+    public void deleteToken(String name) {
+        tokenMap.remove(name);
+    }
+
     //  Проверяем токен на наличие имени (name - проверяемое имя, token - проверяемый токен)
     public boolean checkToken(String name, String token) {
         if (!tokenMap.containsValue(token))
             return false;
         return name.equals(extractFromToken(token));
+    }
+
+    // Проверяем токен на его наличие в кэше
+    public boolean tokenExist(String token) {
+        return tokenMap.containsValue(token);
     }
 
     //  Извлекаем имя из токена
