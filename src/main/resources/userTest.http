@@ -1,0 +1,50 @@
+POST http://localhost:8080/user
+Content-Type: application/json
+
+{
+  "name" : "Petya",
+  "password" : "22222"
+}
+
+###
+
+POST http://localhost:8080/message
+Content-Type: application/json
+Bearer: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJQZXR5YSIsImV4cCI6MTYzNzU5Njc4M30.YdeXRSe4fVzguUgd1yQH6NU1XYAUtE-MZVLFBUKJFWoJIRaqubG1kXN5Qe4qFWZznIbxKrAbnqaTXngOa8glNw
+
+{
+  "name": "Petya",
+  "message": "Сообщение номер 8"
+}
+
+###
+
+POST http://localhost:8080/user
+Content-Type: application/json
+
+{
+  "name" : "Vasya",
+  "password" : "1111"
+}
+
+###
+
+POST http://localhost:8080/message
+Content-Type: application/json
+Bearer: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWYXN5YSIsImV4cCI6MTYzNzM0MjI4MH0.JTDUwN73jdtdSAG4skE1Mv_ssmjbE14gv1iKRN9eFGryGJWT3gtrKJcrfQeCEdFLNPpE5HY0iD3KsMkAQXzRPg
+
+{
+"name": "Vasya",
+"message": "How are you&"
+}
+
+###
+
+POST http://localhost:8080/message
+Content-Type: application/json
+Bearer: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJQZXR5YSIsImV4cCI6MTYzNzM0NDc0N30.9v9AZMZLu5b2MV6-748gE2hNiWcb897xcr8WWGTHeQf1RKove1rWpEzhaPU95v4OD3NpiFrZoUFVmmTuBI0MiA
+
+{
+  "name": "Petya",
+  "message": "History 6"
+}
