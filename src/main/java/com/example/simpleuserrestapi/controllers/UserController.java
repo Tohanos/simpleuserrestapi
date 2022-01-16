@@ -28,7 +28,7 @@ public class UserController {
         this.tokenAuthenticationService = tokenAuthenticationService;
     }
 
-    //  Обработка POST запроса в эндпоинт /login
+    //  Обработка POST запроса в эндпоинт /login - вход пользователя и выдача токена
     @PostMapping("/login")
     public ResponseEntity<TokenDto> userRegister(@RequestBody UserDto userDto) {
         User user;
@@ -47,7 +47,7 @@ public class UserController {
 
     }
 
-    // Обработка POST запроса на создание нового пользователя
+    // Обработка POST запроса в эндпоинт /new на создание нового пользователя
     @PostMapping("/new")
     public ResponseEntity<TokenDto> createNewUser(@RequestBody UserDto userDto) {
         User user;
@@ -62,6 +62,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
+    //  Обработка GET запроса в эндпоинт /users на выдачу списка пользователей
     @GetMapping("/users")
     public ResponseEntity<List<UserDto>> getUsers(@RequestHeader(BEARER) String auth) {
         if (tokenAuthenticationService.tokenExist(auth))
@@ -69,6 +70,7 @@ public class UserController {
         return ResponseEntity.status(401).build();    //  авторизация не прошла
     }
 
+    //  Обработка POST запроса в эндпоинт /update для изменения свойств пользователя
     @PostMapping("/update")
     public ResponseEntity<String> updateUser(@RequestHeader(BEARER) String auth, @RequestBody UserDto userDto) {
         if (tokenAuthenticationService.tokenExist(auth)) {                          //  авторизуемся
@@ -80,6 +82,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();              //  Если пароль не совпадает - возвращаем ошибку
     }
 
+    //  Обработка GET запроса в эндпоинт /delete для удаления пользователя
     @GetMapping("/delete")
     public ResponseEntity<String> deleteUser(@RequestHeader(BEARER) String auth) {
         if (tokenAuthenticationService.tokenExist(auth)) {

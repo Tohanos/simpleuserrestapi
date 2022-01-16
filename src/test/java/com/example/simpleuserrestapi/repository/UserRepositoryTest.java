@@ -19,6 +19,7 @@ public class UserRepositoryTest {
     @Autowired
     private UserRepository userRepository;
 
+    private final String NICKNAME = "Kolya";
     private final String NAME = "Nikolay";
     private final String PASS = "12345";
 
@@ -33,17 +34,19 @@ public class UserRepositoryTest {
 
     @Test
     public void testUsers() {
-        if (userRepository.getUserByName(NAME).isEmpty()) {
+        if (userRepository.getUserByNickname(NICKNAME).isEmpty()) {
             User user = new User();
-            user.setNickname(NAME);
+            user.setNickname(NICKNAME);
+            user.setName(NAME);
             user.setPassword(PASS);
 
             saveUser(user);
         }
-        User newUser = userRepository.getUserByName(NAME).get();
-        assertThat(NAME).isEqualTo(newUser.getNickname());
+        User newUser = userRepository.getUserByNickname(NICKNAME).get();
+        assertThat(NICKNAME).isEqualTo(newUser.getNickname());
+        assertThat(NAME).isEqualTo(newUser.getName());
         assertThat(PASS).isEqualTo(newUser.getPassword());
-        Optional<User> user = userRepository.getUserByName(NAME);
+        Optional<User> user = userRepository.getUserByNickname(NICKNAME);
         user.ifPresent(this::deleteUser);
 
     }

@@ -88,7 +88,7 @@ public class UserDbServiceImpl implements UserDbService {
                 user.getName(),
                 user.getSurname1(),
                 user.getSurname2(),
-                user.getBirthday().toString(),
+                user.getBirthday() == null ? "1970-01-01" : user.getBirthday().toString(),
                 user.getEmail(),
                 user.getPhone(),
                 user.getPassword());
