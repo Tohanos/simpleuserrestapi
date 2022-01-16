@@ -1,0 +1,231 @@
+{
+	"info": {
+		"_postman_id": "43c67890-96cd-4b37-9117-c118c40de6fe",
+		"name": "simpleuserrestapi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Password",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept-encoding": true,
+					"accept": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nickname\": \"Vasya\",\r\n    \"password\": \"11111\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New user",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept-encoding": true,
+					"accept": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nickname\": \"Kolya\",\r\n    \"password\": \"33333\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/new",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update user",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Bearer",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJLb2x5YSIsImV4cCI6MTY0MzEzNjM1Mn0.hSvjXuswqMjpCLycHv0ssZs4jPe1DMC_UT1rdnANbIWMKb7HRTJQWL6WL50M4pX-hKmvb60viFLAX_hGc3YMBw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Nikolay\",\r\n    \"email\": \"cococo@dddd.ru\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/update",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Password Next",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"connection": true,
+					"accept-encoding": true,
+					"accept": true,
+					"user-agent": true
+				}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nickname\": \"Vasya\",\r\n    \"password\": \"11111\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Bearer",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJWYXN5YSIsImV4cCI6MTY0MzEzNjI3MX0.kiTnNzlPA5BDaON00tHHpaF0ihQa419e1hRaNFvy8LGTd_rIzMaoQgoPFvA-my3WcfoRdiXfVtENPD8nOwtUhQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Bearer",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJLb2x5YSIsImV4cCI6MTY0MzEzNjk5OH0.rnDo8SOItuKeLytSleuQEN3TQUsxm4L3TEbuEzKC1vWGGu8tSnG02o1Q6L9GEaD1cAYI-DXzeDyWUHbXjSBvTQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"delete"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
